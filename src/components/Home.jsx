@@ -51,7 +51,7 @@ export default function Home() {
 
         <div className="discipline">
           <img src="https://picsum.photos/600/800?random=4" alt="" />
-          <h3>3D Visuals</h3>
+          <h3>3D Visual</h3>
         </div>
 
         <div className="discipline">
