@@ -1,12 +1,14 @@
-import "./Home.css";
-
+import "./Home.css"
+import "./Header.jsx"
+import Header from "./Header.jsx";
+import d from "../assets/d.jpg"
 
 
 
 export default function Home() {
   return (
     <main className="site">
-
+      <Header />
       {/* ================= HERO ================= */}
       <section className="hero">
         <div className="hero-media">
@@ -50,7 +52,7 @@ export default function Home() {
         </div>
 
         <div className="discipline">
-          <img src="https://picsum.photos/600/800?random=4" alt="" />
+          <img src={d} alt="" />
           <h3>3D Visual</h3>
         </div>
 
@@ -60,31 +62,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= FEATURED WORK ================= */}
-      <section className="featured">
-        <div className="featured-text">
-          <h2>
-            SELECTED<br />
-            PROJECTS
-          </h2>
-          <p>
-            A curated mix of branding systems,
-            motion-led narratives, and 3D explorations.
-          </p>
-        </div>
+{/* ================= FEATURED WORK — BENTO ================= */}
+<section className="featured-bento">
 
-        <div className="featured-grid">
-          <div className="project large">
-            <img src="https://picsum.photos/1200/700?random=6" alt="" />
-          </div>
-          <div className="project">
-            <img src="https://picsum.photos/600/600?random=7" alt="" />
-          </div>
-          <div className="project">
-            <img src="https://picsum.photos/600/600?random=8" alt="" />
-          </div>
-        </div>
-      </section>
+  <div className="bento-header">
+    <h2>
+      SELECTED 
+      PROJECTS
+    </h2>
+    <p>
+      A curated mix of branding systems,
+      motion-led narratives, and 3D explorations.
+    </p>
+  </div>
+
+  <div className="bento-grid">
+
+    {/* BIG HERO */}
+    <div className="bento-item bento-hero">
+      <img src="https://picsum.photos/1200/900?random=6" alt="" />
+      <span className="bento-label">Featured Project</span>
+    </div>
+
+    {/* SMALL STACK */}
+    <div className="bento-item">
+      <img src="https://picsum.photos/600/800?random=7" alt="" />
+    </div>
+
+    <div className="bento-item">
+      <img src="https://picsum.photos/600/800?random=8" alt="" />
+    </div>
+
+    {/* WIDE */}
+    <div className="bento-item bento-wide">
+      <img src="https://picsum.photos/1200/600?random=9" alt="" />
+    </div>
+
+    {/* TALL 
+    <div className="bento-item bento-tall">
+      <img src="https://picsum.photos/600/900?random=10" alt="" />
+    </div>*/}
+
+  </div>
+</section>
+
 
 {/* ================= MOTION STRIP ================= */}
 {/* ================= MOTION STRIP ================= */}
