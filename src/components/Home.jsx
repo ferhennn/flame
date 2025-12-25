@@ -1,6 +1,7 @@
 import "./Home.css"
 import "./Header.jsx"
 import Header from "./Header.jsx";
+import CircularGallery from "./StarGallery.jsx";
 import d from "../assets/d.jpg"
 import one from "../assets/one.mp4"
 import two from "../assets/two.mp4"
@@ -162,7 +163,7 @@ export default function Home() {
   </div>
 </section>
 
-
+<CircularGallery />
 {/* ================= MOTION STRIP ================= */}
 {/* ================= MOTION STRIP ================= */}
 <section className="motion-strip">
