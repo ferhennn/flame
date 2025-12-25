@@ -2,7 +2,10 @@ import "./Home.css"
 import "./Header.jsx"
 import Header from "./Header.jsx";
 import d from "../assets/d.jpg"
-
+import one from "../assets/one.mp4"
+import two from "../assets/two.mp4"
+import three from "../assets/three.mp4"
+import four from "../assets/four.mp4"
 
 
 export default function Home() {
@@ -32,12 +35,65 @@ export default function Home() {
       </section>
 
       {/* ================= IDENTITY STRIP ================= */}
-      <section className="identity-strip">
-        <span>Graphic Design</span>
-        <span>Motion Graphics</span>
-        <span>3D Modelling</span>
-        <span>Video Editing</span>
-      </section>
+<section className="identity-strip">
+
+  {/* ITEMS */}
+  <div className="identity-item" data-video="graphic">
+    <span>Graphic Design</span>
+  </div>
+
+  <div className="identity-item" data-video="motion">
+    <span>Motion Graphics</span>
+  </div>
+
+  <div className="identity-item" data-video="three">
+    <span>3D Modelling</span>
+  </div>
+
+  <div className="identity-item" data-video="video">
+    <span>Video Editing</span>
+  </div>
+
+  {/* BACKGROUND VIDEOS */}
+  <div className="identity-bg">
+    <video
+      className="bg-video graphic"
+      src={four}
+      muted
+      loop
+      autoPlay
+      playsInline
+    />
+    <video
+      className="bg-video motion"
+      src={two}
+      muted
+      loop
+      autoPlay
+      playsInline
+    />
+    <video
+      className="bg-video three"
+      src={three}
+      muted
+      loop
+      autoPlay
+      playsInline
+    />
+    <video
+      className="bg-video video"
+      src={one}
+      muted
+      loop
+      autoPlay
+      playsInline
+      preload="metadata"/>
+  </div>
+
+</section>
+
+
+
 
       {/* ================= DISCIPLINES ================= */}
       <section className="disciplines">

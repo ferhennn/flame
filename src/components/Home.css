@@ -65,15 +65,108 @@ body {
 }
 
 /* ================= IDENTITY STRIP ================= */
+/* ================= IDENTITY STRIP ================= */
+/* ================= IDENTITY STRIP ================= */
+
 .identity-strip {
-  display: flex;
-  justify-content: space-between;
-  padding: 32px 80px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  padding: 0px 0px;
   border-top: 1px solid rgba(255,255,255,0.15);
   border-bottom: 1px solid rgba(255,255,255,0.15);
+
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.2em;
+
+  overflow: hidden;
+}
+
+/* EACH HOVER ZONE */
+.identity-item {
+  min-height: 100px;
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:max-content;
+
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+
+.identity-item:hover {
+  opacity: 1;
+}
+
+/* TEXT */
+.identity-item span {
+  pointer-events: none; /* hover is on container */
+}
+
+/* BACKGROUND VIDEO LAYER */
+.identity-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* VIDEOS */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  filter: brightness(1) saturate(1.1);
+}
+
+/* VIDEO TRIGGERS — NOW BASED ON CONTAINER HOVER */
+.identity-item[data-video="graphic"]:hover ~ .identity-bg .graphic {
+  opacity: 1;
+}
+
+.identity-item[data-video="motion"]:hover ~ .identity-bg .motion {
+  opacity: 1;
+}
+
+.identity-item[data-video="three"]:hover ~ .identity-bg .three {
+  opacity: 1;
+}
+
+.identity-item[data-video="video"]:hover ~ .identity-bg .video {
+  opacity: 1;
+}
+
+/* DARK OVERLAY */
+.identity-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.identity-item:hover {
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE SAFETY */
+@media (max-width: 768px) {
+  .identity-bg {
+    display: none;
+  }
 }
 
 /* ================= DISCIPLINES ================= */
