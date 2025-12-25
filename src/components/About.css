@@ -1,0 +1,209 @@
+/* ================= BASE ================= */
+
+.about-page {
+  background: #0b0b0b;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+
+.about-hero {
+  padding: 160px 80px 120px;
+  max-width: 1200px;
+}
+
+.about-hero h1 {
+  font-size: clamp(64px, 9vw, 140px);
+  line-height: 0.9;
+  margin-bottom: 32px;
+}
+
+.about-hero p {
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.65;
+}
+
+/* ================= SPLIT ================= */
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 0 80px 120px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-content h2 {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.about-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.65;
+  margin-bottom: 24px;
+}
+
+/* ================= PRINCIPLES ================= */
+
+.about-principles {
+  padding: 0 80px 200px;
+}
+
+.about-principles h2 {
+  font-size: 48px;
+  margin-bottom: 64px;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 80px;
+}
+
+.principle span {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  opacity: 0.4;
+}
+
+.principle h3 {
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+.principle p {
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.6;
+}
+
+/* ================= EXPERIENCE ================= */
+
+.about-experience {
+  padding: 0 80px 200px;
+}
+
+.about-experience h2 {
+  font-size: 48px;
+  margin-bottom: 64px;
+}
+
+.experience-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+}
+
+.experience-item span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.experience-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.6;
+}
+
+/* ================= OUTRO ================= */
+
+.about-outro {
+  padding: 120px 80px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.about-outro p {
+  max-width: 520px;
+  font-size: 15px;
+  opacity: 0.6;
+}
+/* ================= PROCESS TIMELINE ================= */
+
+.about-process {
+  position: relative;
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+}
+
+/* vertical line */
+.process-line {
+  position: relative;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* animated fill */
+.process-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: white;
+  transition: height 1.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* items */
+.process-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+}
+
+.process-item span {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  opacity: 0.45;
+}
+
+.process-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.6;
+  max-width: 420px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .about-hero,
+  .about-split,
+  .about-principles,
+  .about-experience,
+  .about-outro {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+
+  .principles-grid,
+  .experience-list {
+    grid-template-columns: 1fr;
+  }
+}

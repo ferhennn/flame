@@ -1,7 +1,8 @@
+import { useEffect, useRef } from "react";
+
 import "./Home.css"
 import "./Header.jsx"
 import Header from "./Header.jsx";
-import CircularGallery from "./StarGallery.jsx";
 import d from "../assets/d.jpg"
 import one from "../assets/one.mp4"
 import two from "../assets/two.mp4"
@@ -9,7 +10,85 @@ import three from "../assets/three.mp4"
 import four from "../assets/four.mp4"
 
 
+
+
+
+
+
 export default function Home() {
+
+   const ctaRef = useRef(null);
+
+
+ useEffect(() => {
+  const skills = document.querySelectorAll(".skill");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const skill = entry.target;
+        const level = parseInt(skill.getAttribute("data-level"), 10);
+        const fill = skill.querySelector(".skill-fill");
+        const value = skill.querySelector(".skill-top span:last-child");
+
+        // Prevent re-trigger
+        if (skill.classList.contains("animated")) return;
+        skill.classList.add("animated");
+
+        /* BAR ANIMATION */
+        fill.style.width = level + "%";
+
+        /* NUMBER COUNT UP */
+        let current = 0;
+        const duration = 1200; // ms
+        const start = performance.now();
+
+        const update = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // easeOut
+
+          current = Math.round(eased * level);
+          value.textContent = current + "%";
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        };
+
+        requestAnimationFrame(update);
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  skills.forEach((skill) => observer.observe(skill));
+
+  return () => observer.disconnect();
+}, []);
+
+  useEffect(() => {
+    const cta = ctaRef.current;
+    if (!cta) return;
+
+    const move = (e) => {
+      const rect = cta.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      cta.style.setProperty("--x", `${x}px`);
+      cta.style.setProperty("--y", `${y}px`);
+    };
+
+    cta.addEventListener("mousemove", move);
+
+    return () => {
+      cta.removeEventListener("mousemove", move);
+    };
+  }, []);
+
+
   return (
     <main className="site">
       <Header />
@@ -163,8 +242,6 @@ export default function Home() {
   </div>
 </section>
 
-<CircularGallery />
-{/* ================= MOTION STRIP ================= */}
 {/* ================= MOTION STRIP ================= */}
 <section className="motion-strip">
 
@@ -220,17 +297,75 @@ export default function Home() {
             My focus is rhythm, composition, and clarity —
             visuals that feel intentional, not decorative.
           </p>
+          <div className="skills">
+
+  <div className="skill" data-level="90">
+    <div className="skill-top">
+      <span>Graphic Design</span>
+      <span>90%</span>
+    </div>
+    <div className="skill-bar">
+      <span className="skill-fill"></span>
+    </div>
+  </div>
+
+  <div className="skill" data-level="80">
+    <div className="skill-top">
+      <span>Motion Graphics</span>
+      <span>80%</span>
+    </div>
+    <div className="skill-bar">
+      <span className="skill-fill"></span>
+    </div>
+  </div>
+
+  <div className="skill" data-level="75">
+    <div className="skill-top">
+      <span>3D Modelling</span>
+      <span>75%</span>
+    </div>
+    <div className="skill-bar">
+      <span className="skill-fill"></span>
+    </div>
+  </div>
+
+  <div className="skill" data-level="85">
+    <div className="skill-top">
+      <span>Video Editing</span>
+      <span>85%</span>
+    </div>
+    <div className="skill-bar">
+      <span className="skill-fill"></span>
+    </div>
+  </div>
+
+</div>
+
         </div>
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="cta">
+  <section className="cta" ref={ctaRef}>
+      <div className="cta-gradient" />
+
+      <div className="cta-inner">
         <h2>
           LET’S CREATE<br />
-          SOMETHING VISUAL.
+          <span>SOMETHING VISUAL</span>
         </h2>
-        <button>START A PROJECT</button>
-      </section>
+
+        <p>
+          Open for collaborations, commissions,
+          and experimental visual projects.
+        </p>
+
+        <button className="cta-button">
+          Start a project
+          <span className="cta-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
 
     </main>
   );

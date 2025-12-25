@@ -18,7 +18,7 @@ body {
 
 /* ================= GLOBAL ================= */
 .site {
-  width: 100%;
+  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -27,6 +27,7 @@ body {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  text-align: center;
 }
 
 .hero-media img {
@@ -414,6 +415,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
+  text-align: left;
 }
 
 .about img {
@@ -431,24 +433,143 @@ body {
   opacity: 0.7;
   max-width: 480px;
 }
+/* ================= SKILLS ================= */
+
+.skills {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* skill row */
+.skill {
+  width: 100%;
+}
+
+/* top row */
+.skill-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+/* bar background */
+.skill-bar {
+  position: relative;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  overflow: hidden;
+}
+
+/* animated fill */
+.skill-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: white;
+  transition: width 1.2s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.skill-top span:last-child {
+  font-variant-numeric: tabular-nums;
+}
 
 /* ================= CTA ================= */
+/* ================= CTA ================= */
+
 .cta {
-  padding: 20px 80px;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    #111 0%,
+    #000 70%
+  );
+  overflow: hidden;
+}
+
+/* subtle noise / depth */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255,255,255,0.04) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.cta-inner {
+  position: relative;
   text-align: center;
+  max-width: 900px;
+  padding: 0 24px;
 }
 
+/* Heading */
 .cta h2 {
-  font-size: clamp(56px, 8vw, 90px);
-  margin-bottom: 40px;
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 0.95;
+  margin-bottom: 12px;
 }
 
-.cta button {
-  background: white;
-  color: black;
+.cta h2 span {
+  opacity: 1;
+}
+
+/* Subtext */
+.cta p {
+  max-width: 480px;
+  margin: 0 auto 56px;
+  opacity: 0.65;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Button */
+.cta-button {
+  background: transparent;
   border: none;
-  padding: 18px 42px;
-  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-bottom: 100px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+
+  padding-bottom: 66px;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+
+  transition: gap 0.3s ease, opacity 0.3s ease;
+}
+
+/* Arrow */
+.cta-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover */
+.cta-button:hover {
+  gap: 28px;
+  opacity: 1;
+}
+
+.cta-button:hover .cta-arrow {
+  transform: translateX(6px);
 }

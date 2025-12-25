@@ -1,19 +1,20 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <header className="site-header">
       {/* LEFT */}
       <div className="header-left">
-        <span className="logo">YOURNAME</span>
+        <span className="logo">AYUSH RAJPUT</span>
       </div>
 
       {/* CENTER */}
       <nav className="header-center">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <Link to="/">HOME</Link>
+        <Link to="/work">WORK</Link>
+        <Link to="/about">ABOUT</Link>
+        <Link to="/contact">CONTACT</Link>
       </nav>
 
       {/* RIGHT */}
