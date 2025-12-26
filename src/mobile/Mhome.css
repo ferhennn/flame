@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0b;
+  color: #f5f5f5;
+  font-family: "Oswald", sans-serif;
+}
+
+/* === WRAPPER === */
+.mhome {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* === HERO === */
+.m-hero {
+  position: relative;
+  height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
+}
+
+.m-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.m-hero-overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.m-eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.m-title {
+  font-size: 56px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.m-title span {
+  color: #c11a1a;
+}
+
+.m-sub {
+  font-size: 14px;
+  opacity: 0.75;
+  margin-top: 12px;
+}
+
+/* === SECTIONS === */
+.m-section {
+  padding: 72px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.m-section h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.m-section p {
+  font-size: 15px;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+/* === ABOUT === */
+.m-about {
+  background: #0f0f0f;
+}
+
+/* === CAPABILITIES === */
+.m-cap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cap-item {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+/* === FEATURED === */
+.m-featured {
+  background: #0b0b0b;
+}
+
+.work-card {
+  padding: 20px;
+  margin-top: 16px;
+  border-left: 4px solid #c11a1a;
+  background: #111;
+}
+
+.work-card span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.work-card p {
+  margin-top: 6px;
+}
+
+/* === CTA === */
+.m-cta {
+  text-align: center;
+  background: #c11a1a;
+  color: #fff;
+}
+
+.m-cta p {
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.m-cta h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.m-cta button {
+  padding: 14px 32px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;
+}

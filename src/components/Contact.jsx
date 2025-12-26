@@ -31,23 +31,22 @@ export default function Contact() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     /* ================= LIGHTS ================= */
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    keyLight.position.set(5, 6, 4);
-    scene.add(keyLight);
+    scene.add(new THREE.DirectionalLight(0xffffff, 1.2).position.set(5, 6, 4));
+    scene.add(new THREE.DirectionalLight(0xffc7a2, 0.6).position.set(-4, 2, 3));
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
 
-    const rimLight = new THREE.DirectionalLight(0xffc7a2, 0.6);
-    rimLight.position.set(-4, 2, 3);
-    scene.add(rimLight);
-
-    const ambient = new THREE.AmbientLight(0xffffff, 0.15);
-    scene.add(ambient);
+    /* ======================================================
+       GROUP — CONTROL FULL 3D OBJECT POSITION FROM HERE
+       ====================================================== */
+    const cigaretteGroup = new THREE.Group();
+    cigaretteGroup.position.set(1.2, 0, 0); // 👈 MOVE FULL OBJECT HERE
+    scene.add(cigaretteGroup);
 
     /* ================= CIGARETTE BODY ================= */
-    const bodyGeo = new THREE.CylinderGeometry(0.085, 0.085, 3.8, 64);
+    const bodyGeo = new THREE.CylinderGeometry(0.085, 0.085, 2.8, 64);
     const bodyMat = new THREE.MeshPhysicalMaterial({
       color: 0xf5f5f5,
       roughness: 0.9,
@@ -56,38 +55,39 @@ export default function Contact() {
     });
 
     const cigarette = new THREE.Mesh(bodyGeo, bodyMat);
-    cigarette.rotation.z = Math.PI / 2.15; // tilt upward
-    cigarette.position.set(1.7, 0.1, 0);
-    scene.add(cigarette);
+    cigarette.rotation.z = Math.PI / 2.15;
+    cigarette.position.set( 2.1, 0.1, 0);
+    cigaretteGroup.add(cigarette);
 
-    /* ================= FILTER ================= */
+    /* ================= FILTER (FIXED) ================= */
     const filterGeo = new THREE.CylinderGeometry(0.085, 0.085, 0.8, 32);
     const filterMat = new THREE.MeshStandardMaterial({
       color: 0xb88955,
       roughness: 1,
     });
+
     const filter = new THREE.Mesh(filterGeo, filterMat);
     filter.rotation.z = Math.PI / 2.15;
-    filter.position.set(0.2, 0.2, 0.1);
-    scene.add(filter);
+    filter.position.set(1.1, 0.21, 0.1);
+    cigaretteGroup.add(filter);
 
-    /* ================= ASH / EMBER ================= */
+    /* ================= EMBER ================= */
     const emberGeo = new THREE.SphereGeometry(0.14, 32, 32);
     const emberMat = new THREE.MeshStandardMaterial({
-      emissive: new THREE.Color(1, 0.35, 0),
+      emissive: new THREE.Color(1, 0.3, 0),
       emissiveIntensity: 2.2,
       color: 0x1a1a1a,
     });
 
     const ember = new THREE.Mesh(emberGeo, emberMat);
-    ember.position.set(3.55, 0.18, 0);
-    scene.add(ember);
+    ember.position.set(3.55, -0.01, 0);
+    cigaretteGroup.add(ember);
 
     const emberLight = new THREE.PointLight(0xff6a00, 2.5, 2);
     emberLight.position.copy(ember.position);
-    scene.add(emberLight);
+    cigaretteGroup.add(emberLight);
 
-    /* ================= REALISTIC SMOKE SHADER ================= */
+    /* ================= SMOKE ================= */
     const smokeMat = new THREE.ShaderMaterial({
       transparent: true,
       depthWrite: false,
@@ -125,7 +125,7 @@ export default function Contact() {
 
     const smokeGeo = new THREE.PlaneGeometry(1.4, 1.8);
     const smokeGroup = new THREE.Group();
-    scene.add(smokeGroup);
+    cigaretteGroup.add(smokeGroup);
 
     for (let i = 0; i < 22; i++) {
       const puff = new THREE.Mesh(smokeGeo, smokeMat);
@@ -143,8 +143,8 @@ export default function Contact() {
     const animate = () => {
       const t = performance.now() * 0.001;
 
-      cigarette.position.y = Math.sin(t * 0.5) * 0.05;
-      cigarette.rotation.y = Math.sin(t * 0.3) * 0.2;
+      cigaretteGroup.position.y = Math.sin(t * 0.5) * 0.05;
+      cigaretteGroup.rotation.y = Math.sin(t * 0.3) * 0.2;
 
       ember.scale.setScalar(1 + Math.sin(t * 7) * 0.15);
       emberLight.intensity = 2 + Math.sin(t * 8) * 0.6;
@@ -155,10 +155,7 @@ export default function Contact() {
         s.position.y += 0.0025 + i * 0.00015;
         s.position.x += Math.sin(t + i) * 0.0008;
         s.rotation.z += 0.0008;
-
-        if (s.position.y > 2.2) {
-          s.position.y = 0;
-        }
+        if (s.position.y > 2.2) s.position.y = 0;
       });
 
       camera.position.x = 2.4 + Math.sin(t * 0.2) * 0.15;
@@ -170,20 +167,17 @@ export default function Contact() {
 
     animate();
 
-    /* ================= RESIZE ================= */
-    const resize = () => {
+    window.addEventListener("resize", () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    });
 
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      renderer.dispose();
-    };
+    return () => renderer.dispose();
   }, []);
+
+
+
 
   return (
     <>
