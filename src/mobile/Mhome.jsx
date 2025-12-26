@@ -79,70 +79,66 @@ export default function Mhome() {
       renderer.dispose();
     };
   }, []);
-
+ 
   return (
-    <div className="mhome">
-      {/* === HERO === */}
-      <section className="m-hero">
-        <canvas ref={canvasRef} className="m-canvas" />
+  <div className="mhome">
+    {/* === HERO === */}
+    <section className="m-hero">
+      <canvas ref={canvasRef} className="m-canvas" />
 
-        <div className="m-hero-overlay">
-          <span className="m-eyebrow">ADVANCED · PORTFOLIO</span>
+      <div className="m-hero-overlay">
+        <span className="m-eyebrow">ADVANCED · PORTFOLIO</span>
 
-          <h1 className="m-title">
-            Crafted
-            <br />
-            With
-            <br />
-            <span>Intent</span>
-          </h1>
+        <h1 className="m-title">
+          Crafted
+          <br />
+          With
+          <br />
+          <span>Intent</span>
+        </h1>
 
-          <p className="m-sub">
-            Design. Motion. Code.
-            <br />
-            Clean. Sharp. Addictive.
-          </p>
-        </div>
-      </section>
-
-      {/* === ABOUT === */}
-      <section className="m-section m-about">
-        <h2>Built Like a Product</h2>
-        <p>
-          I design digital experiences the way premium products are made —
-          minimal, disciplined, and brutally intentional.
+        <p className="m-sub">
+          Design. Motion. Code.
+          <br />
+          Clean. Sharp. Addictive.
         </p>
-      </section>
+      </div>
+    </section>
 
-      {/* === CAPABILITIES === */}
-      <section className="m-section m-cap">
-        <div className="cap-item">UI ENGINEERING</div>
-        <div className="cap-item">3D / MOTION</div>
-        <div className="cap-item">BRAND SYSTEMS</div>
-        <div className="cap-item">EXPERIMENTAL WEB</div>
-      </section>
+    <section className="m-section m-about">
+      <h2>Built Like a Product</h2>
+      <p>
+        I design digital experiences the way premium products are made —
+        minimal, disciplined, and brutally intentional.
+      </p>
+    </section>
 
-      {/* === FEATURED === */}
-      <section className="m-section m-featured">
-        <h2>Selected Work</h2>
+    <section className="m-section m-cap">
+      <div className="cap-item">UI ENGINEERING</div>
+      <div className="cap-item">3D / MOTION</div>
+      <div className="cap-item">BRAND SYSTEMS</div>
+      <div className="cap-item">EXPERIMENTAL WEB</div>
+    </section>
 
-        <div className="work-card">
-          <span>PORTFOLIO SYSTEM</span>
-          <p>Brutalist personal site with 3D & motion.</p>
-        </div>
+    <section className="m-section m-featured">
+      <h2>Selected Work</h2>
 
-        <div className="work-card">
-          <span>BRAND EXPERIENCE</span>
-          <p>High-contrast product storytelling.</p>
-        </div>
-      </section>
+      <div className="work-card">
+        <span>PORTFOLIO SYSTEM</span>
+        <p>Brutalist personal site with 3D & motion.</p>
+      </div>
 
-      {/* === CTA === */}
-      <section className="m-section m-cta">
-        <p>Ready to build something</p>
-        <h2>Sharp?</h2>
-        <button>START A CONVERSATION</button>
-      </section>
-    </div>
-  );
+      <div className="work-card">
+        <span>BRAND EXPERIENCE</span>
+        <p>High-contrast product storytelling.</p>
+      </div>
+    </section>
+
+    <section className="m-section m-cta">
+      <p>Ready to build something</p>
+      <h2>Sharp?</h2>
+      <button>START A CONVERSATION</button>
+    </section>
+  </div>
+);
 }
