@@ -5,6 +5,7 @@ import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
 import GrainOverlay from "@/components/ui/GrainOverlay";
+import MotionProvider from "@/components/providers/MotionProvider";
 
 const neue = Geist({
   variable: "--font-neue",
@@ -52,11 +53,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${neue.variable} ${monoDisplay.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-bg text-ink antialiased">
-        <GrainOverlay />
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <GrainOverlay />
+          <CustomCursor />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );
